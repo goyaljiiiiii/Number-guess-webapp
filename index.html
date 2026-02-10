@@ -1,41 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A clean, modern number guessing game with instant feedback and stats." />
+  <meta name="keywords" content="number guessing game, javascript game, web game" />
+  <meta name="author" content="Your Name" />
 
-    <head>
-        <!-- ✅ SEO Meta Tags -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description"
-            content="You won the Ultimate Number Guessing Game! Celebrate your victory with confetti, animations, and bragging rights.">
-        <meta name="keywords" content="number guessing game, win, celebration, victory, fun game">
-        <meta name="author" content="Your Name">
+  <title>Number Guessing Game</title>
 
-        <title>🎉 Victory! You Guessed It! 🎉</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-        <!-- ✅ Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="badge">JavaScript Mini Project</p>
+      <h1>Number Guessing Game</h1>
+      <p class="subtitle">Guess the number between 1 and 100. Get hints, track attempts, and beat your best score.</p>
+    </header>
 
-        <!-- ✅ External CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
-    </head>
+    <section class="panel" aria-live="polite">
+      <div class="stats">
+        <div class="stat">
+          <p class="stat-label">Attempts</p>
+          <p class="stat-value" id="attempts">0</p>
+        </div>
+        <div class="stat">
+          <p class="stat-label">Best</p>
+          <p class="stat-value" id="best">--</p>
+        </div>
+        <div class="stat">
+          <p class="stat-label">Range</p>
+          <p class="stat-value" id="range">1–100</p>
+        </div>
+      </div>
 
-    <body>
+      <div class="feedback" id="feedback">
+        <span class="signal" aria-hidden="true">
+          <span class="dot" id="dot-1"></span>
+          <span class="dot" id="dot-2"></span>
+          <span class="dot" id="dot-3"></span>
+        </span>
+        <span class="feedback-text" id="feedback-text">Make your first guess to begin.</span>
+      </div>
+      <div class="heat-wrap" aria-live="polite">
+        <div class="heat-label">
+          <span>Heat</span>
+          <span id="heat-value">--%</span>
+        </div>
+        <div class="heat-bar">
+          <div class="heat-fill" id="heat-fill"></div>
+        </div>
+        <p class="heat-hint" id="heat-hint">No heat yet. Make a guess.</p>
+      </div>
 
-        <!-- 🎉 Celebration Message -->
-        <h1>🎉 CONGRATULATIONS! YOU WON! 🎉</h1>
-        <p>You're officially a Number Guessing Master! 🏆</p>
+      <form class="guess-form" id="guess-form">
+        <label class="label" for="guess-input">Your guess</label>
+        <div class="input-row">
+          <input
+            id="guess-input"
+            name="guess"
+            type="number"
+            min="1"
+            max="100"
+            placeholder="Enter a number"
+            autocomplete="off"
+            required
+          />
+          <button class="btn primary" type="submit">Guess</button>
+        </div>
+        <p class="helper">Tip: use the arrow keys to nudge your number.</p>
+      </form>
 
-        <!-- 🔁 Play Again Button -->
-        <button class="btn play-again" onclick="window.location.href='index.html'">🔄 Play Again</button>
+      <div class="actions">
+        <button class="btn ghost" id="reset-btn" type="button">Reset game</button>
+        <button class="btn ghost" id="share-btn" type="button">Share result</button>
+      </div>
 
-        <!-- 📢 Share Button -->
-        <button class="btn share" onclick="shareWin()">📣 Share Your Victory</button>
+      <div class="history">
+        <p class="history-title">Recent guesses</p>
+        <ul class="history-list" id="history-list" aria-live="polite"></ul>
+      </div>
+    </section>
+  </main>
 
-        <!-- 🎊 Confetti Script -->
-        <script src="assets/js/index.js">
+  <div class="win-modal" id="win-modal" aria-hidden="true">
+    <div class="win-card" role="dialog" aria-live="polite" aria-label="You won">
+      <p class="win-tag">Victory</p>
+      <h2>Perfect guess!</h2>
+      <p class="win-message" id="win-message">You got it.</p>
+      <div class="win-actions">
+        <button class="btn primary" id="play-again" type="button">Play again</button>
+        <button class="btn ghost" id="copy-score" type="button">Copy score</button>
+      </div>
+    </div>
+  </div>
 
-        </script>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
 
-    </body>
-
+  <script src="assets/js/index.js"></script>
+</body>
 </html>
