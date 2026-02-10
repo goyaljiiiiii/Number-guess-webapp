@@ -17,6 +17,10 @@ const heatFill = document.getElementById("heat-fill");
 const heatValue = document.getElementById("heat-value");
 const heatHint = document.getElementById("heat-hint");
 
+// No-op fallbacks in case tension helpers were removed.
+function startTension() {}
+function stopTension() {}
+
 const MIN = 1;
 const MAX = 100;
 let secretNumber = 0;
