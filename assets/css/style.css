@@ -27,7 +27,7 @@ body {
 h1 {
     font-size: 3rem;
     /* Reduced for small screens */
-    background-image: url("bg.jpg");
+    background-image: url("../img/bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     --webkit-background-clip: text;
